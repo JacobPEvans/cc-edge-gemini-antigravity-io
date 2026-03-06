@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Cribl Edge pack collects telemetry from 8 file monitor sources across two Google AI developer tools and forwards it to a Cribl Stream worker group for indexing, analysis, and search:
+This Cribl Edge pack collects telemetry from 8 file monitor sources and 1 OTLP receiver across two Google AI developer tools and forwards it to a Cribl Stream worker group for indexing, analysis, and search:
 
 ### Gemini CLI
 
@@ -11,19 +11,25 @@ This Cribl Edge pack collects telemetry from 8 file monitor sources across two G
 3. **Settings** — `~/.gemini/settings.json` — Configuration snapshots including tool permissions, security settings, and context files
 4. **Projects** — `~/.gemini/projects.json` — Project metadata and Google Cloud project associations
 
+### Gemini CLI OpenTelemetry
+
+5. **OTLP receiver** — `0.0.0.0:4317` (gRPC) — Native OpenTelemetry traces from Gemini CLI when `GEMINI_TELEMETRY_ENABLED=true` and `GEMINI_TELEMETRY_OTLP_ENDPOINT=http://localhost:4317`
+
 ### Antigravity IDE
 
-5. **Application logs** — `~/Library/Application Support/Antigravity/logs/**/*.log` — Main process, extension host, language server, auth, telemetry, CloudCode, Chrome DevTools MCP, renderer performance, and crash logs
-6. **Agent brain** — `~/.gemini/antigravity/brain/**/*.md` — Agent task files, implementation plans, and walkthroughs with resolved version history
-7. **Annotations** — `~/.gemini/antigravity/annotations/*.pbtxt` — Annotation protobuf text metadata
-8. **Code tracker** — `~/.gemini/antigravity/code_tracker/**/*` — Code tracking snapshots and file state across active and historical sessions
+6. **Application logs** — `~/Library/Application Support/Antigravity/logs/**/*.log` — Main process, extension host, language server, auth, telemetry, CloudCode, Chrome DevTools MCP, renderer performance, and crash logs
+7. **Agent brain** — `~/.gemini/antigravity/brain/**/*.md` — Agent task files, implementation plans, and walkthroughs with resolved version history
+8. **Annotations** — `~/.gemini/antigravity/annotations/*.pbtxt` — Annotation protobuf text metadata
+9. **Code tracker** — `~/.gemini/antigravity/code_tracker/**/*` — Code tracking snapshots and file state across active and historical sessions
 
 ## Architecture
 
 ```
 Gemini CLI ──writes──> ~/.gemini/tmp/{hash}/chats/session-*.json
-                                        |
-                             Cribl Edge (file monitor)
+    |                                   |
+    |                        Cribl Edge (file monitor)
+    |                                   |
+    └──OTLP gRPC──> Cribl Edge :4317 (OTLP receiver)
                                         |
 Antigravity IDE ──writes──> ~/Library/Application Support/Antigravity/logs/**/*.log
        |                                |
@@ -64,6 +70,37 @@ Lighter-weight logs recording only user-initiated messages:
 - **Type** — Always `user` in this log
 - **Message** — The raw prompt text
 - **Timestamp** — ISO 8601
+
+### Gemini CLI OpenTelemetry
+
+Gemini CLI has native OpenTelemetry support. When enabled, it exports traces via OTLP gRPC to a configurable endpoint. This pack includes an OTLP receiver on port 4317 to collect these traces directly.
+
+**Enable via environment variables:**
+
+```bash
+export GEMINI_TELEMETRY_ENABLED=true
+export GEMINI_TELEMETRY_OTLP_ENDPOINT=http://localhost:4317
+```
+
+**Or via `~/.gemini/settings.json`:**
+
+```json
+{
+  "telemetry": {
+    "enabled": true,
+    "otlpEndpoint": "http://localhost:4317",
+    "otlpProtocol": "grpc",
+    "logPrompts": true
+  }
+}
+```
+
+Use this data for:
+
+- **Distributed tracing** — End-to-end trace visibility across Gemini CLI tool invocations
+- **Latency analysis** — Model response times, tool execution duration
+- **Error tracking** — Failed operations with full trace context
+- **Correlation** — Link OTLP traces to file-based session data via session IDs
 
 ### Antigravity IDE Application Logs
 
@@ -176,6 +213,14 @@ All file monitors resolve paths via `$GEMINI_HOME`. Each sets a `datatype` metad
 | `antigravity-annotations` | `.gemini/antigravity/annotations` | `*.pbtxt` | No | 60s |
 | `antigravity-code-tracker` | `.gemini/antigravity/code_tracker` | `*.md, *.sh, *.nix, *.yaml, *.json` | Yes | 60s |
 
+### OTLP Input
+
+| Input | Type | Host | Port | Protocol | TLS |
+|---|---|---|---|---|---|
+| `gemini-cli-otel` | OpenTelemetry | `0.0.0.0` | `4317` | gRPC | Disabled |
+
+Receives native OpenTelemetry traces from Gemini CLI. Enable with `GEMINI_TELEMETRY_ENABLED=true` and `GEMINI_TELEMETRY_OTLP_ENDPOINT=http://localhost:4317`.
+
 ### Output: `default`
 
 - **Type:** Cribl HTTP
@@ -279,6 +324,14 @@ Levels: `info`, `warning`, `error`
 2. Check that log directories contain `.log` files: `find ~/Library/Application\ Support/Antigravity/logs/ -name "*.log" -size +0c | head -10`
 3. Note that some Antigravity log files may be empty (0 bytes) if the feature wasn't used in that session.
 
+### No OTLP data from Gemini CLI
+
+1. Verify telemetry is enabled: `echo $GEMINI_TELEMETRY_ENABLED` should return `true`.
+2. Verify the endpoint: `echo $GEMINI_TELEMETRY_OTLP_ENDPOINT` should return `http://localhost:4317`.
+3. Alternatively check `~/.gemini/settings.json` for a `telemetry` block with `enabled: true`.
+4. Confirm port 4317 is not in use by another collector: `lsof -i :4317`.
+5. Check Cribl Edge logs for OTLP receiver bind errors.
+
 ### Stale file tracking
 
 Cribl Edge tracks file state in its kvstore. If you need to re-ingest files from the beginning, stop the worker, clear the relevant kvstore directories, and restart.
@@ -289,6 +342,11 @@ Cribl Edge tracks file state in its kvstore. If you need to re-ingest files from
 
 ## Release Notes
 
+- **1.1.0** — 2026-03-06
+  - Added OTLP gRPC receiver (port 4317) for Gemini CLI native OpenTelemetry traces
+  - Added route for `gemini-cli-otel` input
+  - Added telemetry configuration documentation (env vars and settings.json)
+  - Added OTLP troubleshooting section
 - **1.0.0** — 2026-03-06
   - Initial release
   - 4 Gemini CLI file monitor inputs (sessions, logs, settings, projects)

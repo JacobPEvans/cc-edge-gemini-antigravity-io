@@ -82,3 +82,13 @@ routes:
     filter: __inputId=='file:cc-edge-gemini-antigravity.antigravity-code-tracker'
     clones: []
     output: default
+  - id: gemini-otel
+    name: Gemini CLI OpenTelemetry (OTLP gRPC)
+    final: true
+    disabled: false
+    pipeline: main
+    description: "Gemini CLI native OpenTelemetry traces and spans via OTLP gRPC on port 4317"
+    enableOutputExpression: false
+    filter: __inputId=='open_telemetry:cc-edge-gemini-antigravity.gemini-cli-otel'
+    clones: []
+    output: default
