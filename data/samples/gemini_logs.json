@@ -1,0 +1,16 @@
+[
+  {
+    "sessionId": "d156e9e0-0000-0000-0000-000000000000",
+    "messageId": 0,
+    "type": "user",
+    "message": "Please read the README.md file and summarize it.",
+    "timestamp": "2026-03-06T12:00:00.000Z"
+  },
+  {
+    "sessionId": "d156e9e0-0000-0000-0000-000000000000",
+    "messageId": 1,
+    "type": "user",
+    "message": "Now update the description section to include the new features.",
+    "timestamp": "2026-03-06T12:02:30.000Z"
+  }
+]

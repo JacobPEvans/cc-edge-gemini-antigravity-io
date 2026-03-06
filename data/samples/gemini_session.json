@@ -1,0 +1,61 @@
+{
+  "sessionId": "d156e9e0-0000-0000-0000-000000000000",
+  "projectHash": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+  "startTime": "2026-03-06T12:00:00.000Z",
+  "lastUpdated": "2026-03-06T12:05:00.000Z",
+  "messages": [
+    {
+      "id": "cc2ffff1-0000-0000-0000-000000000000",
+      "timestamp": "2026-03-06T12:00:00.000Z",
+      "type": "user",
+      "content": "Please read the README.md file and summarize it."
+    },
+    {
+      "id": "895998e6-0000-0000-0000-000000000000",
+      "timestamp": "2026-03-06T12:00:30.000Z",
+      "type": "gemini",
+      "content": "",
+      "toolCalls": [
+        {
+          "id": "read_file-0000000000000-000000000000",
+          "name": "read_file",
+          "args": {
+            "file_path": "README.md"
+          },
+          "result": [
+            {
+              "functionResponse": {
+                "id": "read_file-0000000000000-000000000000",
+                "name": "read_file",
+                "response": {
+                  "output": "# Sample Project\n\nThis is a sample README for demonstration purposes."
+                }
+              }
+            }
+          ],
+          "status": "success",
+          "timestamp": "2026-03-06T12:00:30.000Z",
+          "displayName": "ReadFile",
+          "description": "Reads and returns the content of a specified file.",
+          "renderOutputAsMarkdown": true
+        }
+      ],
+      "thoughts": [
+        {
+          "subject": "Reading the file",
+          "description": "I need to read the README.md file first to understand its contents before summarizing.",
+          "timestamp": "2026-03-06T12:00:29.000Z"
+        }
+      ],
+      "model": "gemini-3-pro-preview",
+      "tokens": {
+        "input": 1200,
+        "output": 150,
+        "cached": 800,
+        "thoughts": 45,
+        "tool": 0,
+        "total": 2195
+      }
+    }
+  ]
+}

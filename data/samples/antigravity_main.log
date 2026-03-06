@@ -1,0 +1,8 @@
+2026-03-06 12:00:00.000 [info] [BrowserOnboardingClientMainService] Starting browser onboarding server
+2026-03-06 12:00:00.001 [info] [BrowserOnboardingClientServer] Browser onboarding server started on http://localhost:59972
+2026-03-06 12:00:00.001 [info] update#setState idle
+2026-03-06 12:00:15.000 [warning] [perf] profiling STARTED e0501276-0000-0000-0000-000000000000
+2026-03-06 12:00:20.000 [warning] [perf] profiling DONE e0501276-0000-0000-0000-000000000000
+2026-03-06 12:00:30.000 [info] update#setState checking for updates
+2026-03-06 12:00:30.150 [info] update#setState idle
+2026-03-06 12:05:00.000 [info] Extension host with pid 12345 exited with code: 0, signal: unknown.

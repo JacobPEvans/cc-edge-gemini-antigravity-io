@@ -1,0 +1,11 @@
+2026-03-06 12:00:01.000 [info] I0306 12:00:01.000000 12345 server.go:1201] Starting language server process with pid 12345
+2026-03-06 12:00:01.000 [info] I0306 12:00:01.000100 12345 server.go:289] Setting GOMAXPROCS to 4
+2026-03-06 12:00:01.002 [info] I0306 12:00:01.002000 12345 server.go:481] Language server will attempt to listen on host 127.0.0.1
+2026-03-06 12:00:01.002 [info] I0306 12:00:01.002100 12345 server.go:496] Language server listening on random port at 60078 for HTTPS
+2026-03-06 12:00:01.002 [info] I0306 12:00:01.002200 12345 server.go:503] Language server listening on random port at 60079 for HTTP
+2026-03-06 12:00:01.150 [info] I0306 12:00:01.150000 12345 server.go:474] Created extension server client at port 60071
+2026-03-06 12:00:01.152 [info] I0306 12:00:01.152000 12345 server.go:608] Using ApiServerClientV2
+2026-03-06 12:00:01.165 [info] (Antigravity) 2026-03-06 12:00:01.165 [INFO]: Language server started
+2026-03-06 12:00:01.178 [info] I0306 12:00:01.173000 12345 server.go:1579] initialized server successfully in 173.095ms
+2026-03-06 12:00:01.230 [info] (Antigravity) 2026-03-06 12:00:01.230 [INFO]: LS lspClient started successfully
+2026-03-06 12:00:02.175 [info] I0306 12:00:02.175000 12345 system_mcps.go:80] Chrome DevTools MCP URL discovered at http://127.0.0.1:60103/mcp, stopping watcher

@@ -1,0 +1,43 @@
+gemini_session:
+  sampleName: sanitized_gemini_session.json
+  created: 1772000000000
+  size: 2500
+  numEvents: 1
+  description: A Gemini CLI chat session containing user and gemini messages, tool
+    calls with file read/write operations, thought processes, model identification,
+    and per-message token usage breakdowns (input, output, cached, thoughts, tool,
+    total). Sessions are stored per-project hash.
+gemini_logs:
+  sampleName: sanitized_gemini_logs.json
+  created: 1772000100000
+  size: 800
+  numEvents: 1
+  description: User interaction logs from Gemini CLI sessions. Each entry contains
+    a sessionId, messageId, type (user), the raw message text, and ISO timestamp.
+    Useful for tracking prompt patterns and session engagement.
+antigravity_main:
+  sampleName: sanitized_antigravity_main.log
+  created: 1772000200000
+  size: 1200
+  numEvents: 1
+  description: Antigravity IDE main process logs including onboarding server startup,
+    update state changes, performance profiling sessions (STARTED/DONE with UUIDs),
+    and extension host lifecycle events. Format is timestamp [level] message.
+antigravity_extension:
+  sampleName: sanitized_antigravity_extension.log
+  created: 1772000300000
+  size: 900
+  numEvents: 1
+  description: Antigravity language server extension logs. Includes Go process
+    startup with PID, GOMAXPROCS settings, HTTPS/HTTP port bindings, API server
+    client initialization, and LSP client lifecycle events. The language server is
+    a Go binary communicating over localhost ports.
+antigravity_brain:
+  sampleName: sanitized_antigravity_brain.md
+  created: 1772000400000
+  size: 1500
+  numEvents: 1
+  description: Agent brain task and plan files from Antigravity sessions. Contains
+    implementation plans, task status with resolved versions tracking iterative
+    refinement, and walkthrough documents. Each brain session is identified by a
+    UUID and may contain multiple resolved versions of each document.

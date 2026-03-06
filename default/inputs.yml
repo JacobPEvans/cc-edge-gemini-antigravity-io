@@ -1,0 +1,220 @@
+inputs:
+  gemini-cli-sessions:
+    disabled: false
+    sendToRoutes: true
+    pqEnabled: false
+    streamtags: []
+    mode: manual
+    interval: 10
+    filenames:
+      - "session-*.json"
+    filterArchivedFiles: false
+    tailOnly: false
+    idleTimeout: 300
+    checkFileModTime: false
+    forceText: false
+    hashLen: 256
+    staleChannelFlushMs: 10000
+    suppressMissingPathErrors: false
+    deleteFiles: false
+    saltHash: false
+    includeUnidentifiableBinary: false
+    recurse: true
+    type: file
+    path: "$GEMINI_HOME/.gemini/tmp"
+    metadata:
+      - name: datatype
+        value: "'gemini-cli-session'"
+
+  gemini-cli-logs:
+    disabled: false
+    sendToRoutes: true
+    pqEnabled: false
+    streamtags: []
+    mode: manual
+    interval: 30
+    filenames:
+      - "logs.json"
+    filterArchivedFiles: false
+    tailOnly: false
+    idleTimeout: 300
+    checkFileModTime: false
+    forceText: false
+    hashLen: 256
+    staleChannelFlushMs: 10000
+    suppressMissingPathErrors: false
+    deleteFiles: false
+    saltHash: false
+    includeUnidentifiableBinary: false
+    recurse: true
+    type: file
+    path: "$GEMINI_HOME/.gemini/tmp"
+    metadata:
+      - name: datatype
+        value: "'gemini-cli-logs'"
+
+  gemini-cli-settings:
+    disabled: false
+    sendToRoutes: true
+    pqEnabled: false
+    streamtags: []
+    mode: manual
+    interval: 120
+    filenames:
+      - "settings.json"
+    filterArchivedFiles: false
+    tailOnly: false
+    idleTimeout: 300
+    checkFileModTime: false
+    forceText: false
+    hashLen: 256
+    staleChannelFlushMs: 10000
+    suppressMissingPathErrors: false
+    deleteFiles: false
+    saltHash: false
+    includeUnidentifiableBinary: false
+    recurse: false
+    type: file
+    path: "$GEMINI_HOME/.gemini"
+    metadata:
+      - name: datatype
+        value: "'gemini-cli-settings'"
+
+  gemini-cli-projects:
+    disabled: false
+    sendToRoutes: true
+    pqEnabled: false
+    streamtags: []
+    mode: manual
+    interval: 120
+    filenames:
+      - "projects.json"
+    filterArchivedFiles: false
+    tailOnly: false
+    idleTimeout: 300
+    checkFileModTime: false
+    forceText: false
+    hashLen: 256
+    staleChannelFlushMs: 10000
+    suppressMissingPathErrors: false
+    deleteFiles: false
+    saltHash: false
+    includeUnidentifiableBinary: false
+    recurse: false
+    type: file
+    path: "$GEMINI_HOME/.gemini"
+    metadata:
+      - name: datatype
+        value: "'gemini-cli-projects'"
+
+  antigravity-app-logs:
+    disabled: false
+    sendToRoutes: true
+    pqEnabled: false
+    streamtags: []
+    mode: manual
+    interval: 10
+    filenames:
+      - "*.log"
+    filterArchivedFiles: false
+    tailOnly: false
+    idleTimeout: 300
+    checkFileModTime: false
+    forceText: false
+    hashLen: 256
+    staleChannelFlushMs: 10000
+    suppressMissingPathErrors: false
+    deleteFiles: false
+    saltHash: false
+    includeUnidentifiableBinary: false
+    recurse: true
+    type: file
+    path: "$GEMINI_HOME/Library/Application Support/Antigravity/logs"
+    metadata:
+      - name: datatype
+        value: "'antigravity-app-logs'"
+
+  antigravity-brain:
+    disabled: false
+    sendToRoutes: true
+    pqEnabled: false
+    streamtags: []
+    mode: manual
+    interval: 60
+    filenames:
+      - "*.md"
+    filterArchivedFiles: false
+    tailOnly: false
+    idleTimeout: 300
+    checkFileModTime: false
+    forceText: false
+    hashLen: 256
+    staleChannelFlushMs: 10000
+    suppressMissingPathErrors: false
+    deleteFiles: false
+    saltHash: false
+    includeUnidentifiableBinary: false
+    recurse: true
+    type: file
+    path: "$GEMINI_HOME/.gemini/antigravity/brain"
+    metadata:
+      - name: datatype
+        value: "'antigravity-brain'"
+
+  antigravity-annotations:
+    disabled: false
+    sendToRoutes: true
+    pqEnabled: false
+    streamtags: []
+    mode: manual
+    interval: 60
+    filenames:
+      - "*.pbtxt"
+    filterArchivedFiles: false
+    tailOnly: false
+    idleTimeout: 300
+    checkFileModTime: false
+    forceText: false
+    hashLen: 256
+    staleChannelFlushMs: 10000
+    suppressMissingPathErrors: false
+    deleteFiles: false
+    saltHash: false
+    includeUnidentifiableBinary: false
+    recurse: false
+    type: file
+    path: "$GEMINI_HOME/.gemini/antigravity/annotations"
+    metadata:
+      - name: datatype
+        value: "'antigravity-annotations'"
+
+  antigravity-code-tracker:
+    disabled: false
+    sendToRoutes: true
+    pqEnabled: false
+    streamtags: []
+    mode: manual
+    interval: 60
+    filenames:
+      - "*.md"
+      - "*.sh"
+      - "*.nix"
+      - "*.yaml"
+      - "*.json"
+    filterArchivedFiles: false
+    tailOnly: false
+    idleTimeout: 300
+    checkFileModTime: false
+    forceText: false
+    hashLen: 256
+    staleChannelFlushMs: 10000
+    suppressMissingPathErrors: false
+    deleteFiles: false
+    saltHash: false
+    includeUnidentifiableBinary: false
+    recurse: true
+    type: file
+    path: "$GEMINI_HOME/.gemini/antigravity/code_tracker"
+    metadata:
+      - name: datatype
+        value: "'antigravity-code-tracker'"

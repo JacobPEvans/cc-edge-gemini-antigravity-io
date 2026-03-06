@@ -1,0 +1,84 @@
+id: default
+groups: {}
+comments: []
+routes:
+  - id: gemini-sessions
+    name: Gemini CLI Sessions (File Monitor)
+    final: true
+    disabled: false
+    pipeline: main
+    description: "Gemini CLI chat session JSON files with messages, tool calls, thoughts, and token usage"
+    enableOutputExpression: false
+    filter: __inputId=='file:cc-edge-gemini-antigravity.gemini-cli-sessions'
+    clones: []
+    output: default
+  - id: gemini-logs
+    name: Gemini CLI Logs (File Monitor)
+    final: true
+    disabled: false
+    pipeline: main
+    description: "Gemini CLI user interaction message logs"
+    enableOutputExpression: false
+    filter: __inputId=='file:cc-edge-gemini-antigravity.gemini-cli-logs'
+    clones: []
+    output: default
+  - id: gemini-settings
+    name: Gemini CLI Settings (File Monitor)
+    final: true
+    disabled: false
+    pipeline: main
+    description: "Gemini CLI configuration settings snapshot"
+    enableOutputExpression: false
+    filter: __inputId=='file:cc-edge-gemini-antigravity.gemini-cli-settings'
+    clones: []
+    output: default
+  - id: gemini-projects
+    name: Gemini CLI Projects (File Monitor)
+    final: true
+    disabled: false
+    pipeline: main
+    description: "Gemini CLI project metadata"
+    enableOutputExpression: false
+    filter: __inputId=='file:cc-edge-gemini-antigravity.gemini-cli-projects'
+    clones: []
+    output: default
+  - id: antigravity-app-logs
+    name: Antigravity App Logs (File Monitor)
+    final: true
+    disabled: false
+    pipeline: main
+    description: "Antigravity IDE application, extension, and session logs"
+    enableOutputExpression: false
+    filter: __inputId=='file:cc-edge-gemini-antigravity.antigravity-app-logs'
+    clones: []
+    output: default
+  - id: antigravity-brain
+    name: Antigravity Brain (File Monitor)
+    final: true
+    disabled: false
+    pipeline: main
+    description: "Antigravity agent brain data including tasks, implementation plans, and walkthroughs"
+    enableOutputExpression: false
+    filter: __inputId=='file:cc-edge-gemini-antigravity.antigravity-brain'
+    clones: []
+    output: default
+  - id: antigravity-annotations
+    name: Antigravity Annotations (File Monitor)
+    final: true
+    disabled: false
+    pipeline: main
+    description: "Antigravity annotation protobuf text metadata"
+    enableOutputExpression: false
+    filter: __inputId=='file:cc-edge-gemini-antigravity.antigravity-annotations'
+    clones: []
+    output: default
+  - id: antigravity-code-tracker
+    name: Antigravity Code Tracker (File Monitor)
+    final: true
+    disabled: false
+    pipeline: main
+    description: "Antigravity code tracking snapshots and file state"
+    enableOutputExpression: false
+    filter: __inputId=='file:cc-edge-gemini-antigravity.antigravity-code-tracker'
+    clones: []
+    output: default
