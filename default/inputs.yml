@@ -218,3 +218,26 @@ inputs:
     metadata:
       - name: datatype
         value: "'antigravity-code-tracker'"
+
+  gemini-cli-otel:
+    disabled: false
+    sendToRoutes: true
+    pqEnabled: false
+    streamtags:
+      - vct
+      - otel
+    host: 127.0.0.1
+    port: 4317
+    tls:
+      disabled: true
+    protocol: grpc
+    extractSpans: true
+    extractMetrics: false
+    otlpVersion: 1.3.1
+    authType: none
+    maxActiveCxn: 1000
+    extractLogs: false
+    type: open_telemetry
+    metadata:
+      - name: datatype
+        value: "'gemini-cli-otel'"
