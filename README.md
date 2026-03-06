@@ -13,7 +13,7 @@ This Cribl Edge pack collects telemetry from 8 file monitor sources and 1 OTLP r
 
 ### Gemini CLI OpenTelemetry
 
-5. **OTLP receiver** — `0.0.0.0:4317` (gRPC) — Native OpenTelemetry traces from Gemini CLI when `GEMINI_TELEMETRY_ENABLED=true` and `GEMINI_TELEMETRY_OTLP_ENDPOINT=http://localhost:4317`
+5. **OTLP receiver** — `127.0.0.1:4317` (gRPC) — Native OpenTelemetry traces from Gemini CLI when `GEMINI_TELEMETRY_ENABLED=true` and `GEMINI_TELEMETRY_OTLP_ENDPOINT=http://localhost:4317`
 
 ### Antigravity IDE
 
@@ -217,7 +217,7 @@ All file monitors resolve paths via `$GEMINI_HOME`. Each sets a `datatype` metad
 
 | Input | Type | Host | Port | Protocol | TLS |
 |---|---|---|---|---|---|
-| `gemini-cli-otel` | OpenTelemetry | `0.0.0.0` | `4317` | gRPC | Disabled |
+| `gemini-cli-otel` | OpenTelemetry | `127.0.0.1` | `4317` | gRPC | Disabled |
 
 Receives native OpenTelemetry traces from Gemini CLI. Enable with `GEMINI_TELEMETRY_ENABLED=true` and `GEMINI_TELEMETRY_OTLP_ENDPOINT=http://localhost:4317`.
 
