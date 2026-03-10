@@ -7,7 +7,7 @@ inputs:
     mode: manual
     interval: 10
     filenames:
-      - "session-*.json"
+      - "*session-*.json"
     filterArchivedFiles: false
     tailOnly: false
     idleTimeout: 300
@@ -34,7 +34,7 @@ inputs:
     mode: manual
     interval: 30
     filenames:
-      - "logs.json"
+      - "*logs.json"
     filterArchivedFiles: false
     tailOnly: false
     idleTimeout: 300
@@ -61,7 +61,7 @@ inputs:
     mode: manual
     interval: 120
     filenames:
-      - "settings.json"
+      - "*settings.json"
     filterArchivedFiles: false
     tailOnly: false
     idleTimeout: 300
@@ -88,7 +88,7 @@ inputs:
     mode: manual
     interval: 120
     filenames:
-      - "projects.json"
+      - "*projects.json"
     filterArchivedFiles: false
     tailOnly: false
     idleTimeout: 300
