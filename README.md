@@ -342,12 +342,18 @@ Cribl Edge tracks file state in its kvstore. If you need to re-ingest files from
 
 ## Release Notes
 
-- **1.1.0** — 2026-03-06
+- **0.2.2** — 2026-03-11
+  - Enable `tailOnly: true` on all file inputs — eliminates re-reading entire files from beginning on every poll cycle; sessions are append-only, only new data needs processing
+  - Enable `checkFileModTime: true` on all file inputs — skips unchanged files entirely, eliminating unnecessary I/O on every poll
+  - Increase interval from 10s → 30s on `gemini-cli-sessions` and `antigravity-app-logs` — reduces recursive scan frequency for the largest directories
+- **0.2.1** — 2026-03-10
+  - Fix FileMonitor filename patterns: add leading wildcard (`*session-*.json`, `*logs.json`, etc.) required by Cribl 4.16.x FileMonitor behavior change
+- **0.2.0** — 2026-03-06
   - Added OTLP gRPC receiver (port 4317) for Gemini CLI native OpenTelemetry traces
   - Added route for `gemini-cli-otel` input
   - Added telemetry configuration documentation (env vars and settings.json)
   - Added OTLP troubleshooting section
-- **1.0.0** — 2026-03-06
+- **0.1.0** — 2026-03-07
   - Initial release
   - 4 Gemini CLI file monitor inputs (sessions, logs, settings, projects)
   - 4 Antigravity IDE file monitor inputs (app logs, brain, annotations, code tracker)
