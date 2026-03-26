@@ -5,11 +5,16 @@ on:
       - "default/**"
       - "data/**"
       - "package.json"
+      - ".github/workflows/validate.yml"
   pull_request:
     paths:
       - "default/**"
       - "data/**"
       - "package.json"
+      - ".github/workflows/validate.yml"
+  workflow_dispatch:
+
+permissions: {}
 
 jobs:
   validate:
